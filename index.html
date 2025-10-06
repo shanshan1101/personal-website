@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 - 您的名字</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>冯珊珊</h2>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">关于</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#portfolio" class="nav-link">生活照</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" onclick="openAIAssistant(); return false;">AI助手</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">联系</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区 -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">您好，我是 <span class="highlight">冯珊珊</span></h1>
+                    <p class="hero-subtitle">中南大学 | AI爱好者 </p>
+                    <p class="hero-description">
+                        热爱学习新知识，乐于尝试不同AI产品。
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="openAIAssistant()">
+                            <i class="fas fa-robot"></i> 开始对话
+                        </button>
+                        <a href="#portfolio" class="btn btn-secondary">
+                            <i class="fas fa-eye"></i> 查看我的照片
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="images_shanshan/0.jpg" alt="个人照片" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI智能助手模态框 -->
+    <div class="modal" id="aiModal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeAIAssistant()">&times;</span>
+            <div class="ai-header">
+                <div class="ai-title">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI智能助手</h3>
+                </div>
+            </div>
+            <div class="ai-chat" id="aiChat">
+                <div class="ai-message">
+                    <div class="ai-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>您好，我是珊珊的AI小助手，有什么可以帮助您吗?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ai-input-area">
+                <div class="ai-input-container">
+                    <input type="text" id="aiInput" placeholder="输入您的问题..." onkeypress="handleAIKeyPress(event)">
+                    <button class="ai-send" onclick="sendAIMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="ai-actions">
+                    <button class="ai-action-btn" onclick="clearAIChat()">
+                        <i class="fas fa-trash"></i> 清空对话
+                    </button>
+                    <button class="ai-action-btn" onclick="exportAIChat()">
+                        <i class="fas fa-download"></i> 导出记录
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 照片轮播区 -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">您好！欢迎来到珊珊的个人主页</h2>
+            <div class="carousel-container">
+                <div class="carousel" id="carousel">
+                    <div class="carousel-item active">
+                        <img src="images_shanshan/1.jpg" alt="生活照1">
+                        <div class="carousel-caption">
+                            <h3>开心比耶</h3>
+                            <p>2024.11</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images_shanshan/2.jpg" alt="生活照2">
+                        <div class="carousel-caption">
+                            <h3>艺术展</h3>
+                            <p>2025.05</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images_shanshan/3.jpg" alt="生活照3">
+                        <div class="carousel-caption">
+                            <h3>后湖赏莲</h3>
+                            <p>2024.05</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images_shanshan/4.jpg" alt="生活照4">
+                        <div class="carousel-caption">
+                            <h3>户外风光</h3>
+                            <p>2024.05</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images_shanshan/5.jpg" alt="生活照5">
+                        <div class="carousel-caption">
+                            <h3>等待美食</h3>
+                            <p>2024.03</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images_shanshan/6.jpg" alt="生活照6">
+                        <div class="carousel-caption">
+                            <h3>出差也很开心</h3>
+                            <p>2025.07</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="changeSlide(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" onclick="changeSlide(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="goToSlide(1)"></span>
+                    <span class="indicator" onclick="goToSlide(2)"></span>
+                    <span class="indicator" onclick="goToSlide(3)"></span>
+                    <span class="indicator" onclick="goToSlide(4)"></span>
+                    <span class="indicator" onclick="goToSlide(5)"></span>
+                    <span class="indicator" onclick="goToSlide(6)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我区域 -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">关于我</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>我的故事</h3>
+                    <p>
+                        我是一名对AI充满热情的学生，拥有1段AI产品助理的实习经验。
+                    </p>
+                    <p>
+                        ● 针对外部产品（AICC、AIGC），搜集测评分析，撰写行业调研报告。同时进行大模型技术的学习。 
+                        ● 针对内部的垂类产品，运用Prompt工程优化模型输出质量，通过知识库构建、数据清洗与A/B测试等方法迭代产品功能，显著
+                        提升用户体验与对话准确率。 
+                        ● 协同开发团队进行GEO（生成式引擎优化）工具的初期需求梳理与功能设计。 
+                        ● 进行客户拜访，挖掘并分析客户在业务场景中的核心痛点；独立输出产品解决方案，绘制原型图，撰写PRD文档，推动开发落地，
+                        最终助力客户工作效率提升50%。 
+                    </p>
+                    <p>
+                        除了产品工作，我还热衷于学习新技术，分享知识，并帮助团队成长。
+                        我始终相信持续学习是保持竞争力的关键。
+                    </p>
+                </div>
+                <div class="skills">
+                    <h3>技能专长</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="fas fa-code"></i>
+                            <span>Vibe Coding</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-wand-magic-sparkles"></i>
+                            <span>Prompt Engineering</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-diagram-project"></i>
+                            <span>Axure</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fas fa-database"></i>
+                            <span>SQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="fab fa-figma"></i>
+                            <span>Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集区域 -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">生活照</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" onclick="openModal('modal1')">
+                    <img src="images_shanshan/1.jpg" alt="生活照1">
+                    <div class="portfolio-overlay">
+                        <h3>2024.11</h3>
+                        <p>吃饭前先拍点儿美照</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" onclick="openModal('modal2')">
+                    <img src="images_shanshan/2.jpg" alt="生活照2">
+                    <div class="portfolio-overlay">
+                        <h3>2025.05</h3>
+                        <p>探索一个森林艺术展</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" onclick="openModal('modal3')">
+                    <img src="images_shanshan/3.jpg" alt="生活照3">
+                    <div class="portfolio-overlay">
+                        <h3>2024.05</h3>
+                        <p>后湖的莲花好美呀！</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" onclick="openModal('modal4')">
+                    <img src="images_shanshan/4.jpg" alt="生活照4">
+                    <div class="portfolio-overlay">
+                        <h3>2024.05</h3>
+                        <p>拍照总喜欢嘟嘴，哈哈</p>
+                    </div>
+                </div>
+                    <div class="portfolio-item" onclick="openModal('modal5')">
+                        <img src="images_shanshan/5.jpg" alt="生活照5">
+                        <div class="portfolio-overlay">
+                            <h3>2024.03</h3>
+                            <p>找到一家好吃的西餐厅，静静等上菜...</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" onclick="openModal('modal6')">
+                        <img src="images_shanshan/6.jpg" alt="生活照6">
+                        <div class="portfolio-overlay">
+                            <h3>2025.07</h3>
+                            <p>只做面部防晒，嘿嘿</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系表单 -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">联系我</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>让我们开始对话</h3>
+                    <p>如果您有任何需求，欢迎随时联系我。</p>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>1919290381@qq.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-weixin"></i>
+                        <span>微信：FSDAYTOY</span>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="您的姓名" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="您的邮箱" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="您的消息" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> 发送消息
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 谢谢您的访问</p>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="WeChat" onclick="openModal('qrWeChat'); return false;">
+                        <i class="fab fa-weixin"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="QQ" onclick="openModal('qrQQ'); return false;">
+                        <i class="fab fa-qq"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 生活照模态框 -->
+    <div class="modal" id="qrWeChat">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('qrWeChat')">&times;</span>
+            <h2>微信二维码</h2>
+            <img src="images_shanshan/微信二维码.jpg" alt="微信二维码">
+            <p>微信号：FSDAYTOY</p>
+        </div>
+    </div>
+
+    <div class="modal" id="qrQQ">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('qrQQ')">&times;</span>
+            <h2>QQ二维码</h2>
+            <img src="images_shanshan/QQ二维码.jpg" alt="QQ二维码">
+            <p>QQ：1919290381</p>
+        </div>
+    </div>
+    <div class="modal" id="modal1">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>生活照 1</h2>
+            <img src="images_shanshan/1.jpg" alt="生活照1">
+            <p>日常生活记录。</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal2">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h2>生活照 2</h2>
+            <img src="images_shanshan/2.jpg" alt="生活照2">
+            <p>日常生活记录。</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal3">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h2>生活照 3</h2>
+            <img src="images_shanshan/3.jpg" alt="生活照3">
+            <p>日常生活记录。</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal4">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal4')">&times;</span>
+            <h2>生活照 4</h2>
+            <img src="images_shanshan/4.jpg" alt="生活照4">
+            <p>日常生活记录。</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal5">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal5')">&times;</span>
+            <h2>生活照 5</h2>
+            <img src="images_shanshan/5.jpg" alt="生活照5">
+            <p>日常生活记录。</p>
+        </div>
+    </div>
+
+    <div class="modal" id="modal6">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal6')">&times;</span>
+            <h2>生活照 6</h2>
+            <img src="images_shanshan/6.jpg" alt="生活照6">
+            <p>日常生活记录。</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
