@@ -1,8 +1,0 @@
-# 暂存所有变动（包括新建的文件夹和移动的图片）
-git add .  
-
-# 提交说明（注明移动了图片到子文件夹）
-git commit -m "将图片移动到 images_shanshan 子文件夹"  
-
-# 推送到 GitHub 远程仓库
-git push origin main  
