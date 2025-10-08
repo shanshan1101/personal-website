@@ -49,6 +49,8 @@ try {
 
 dotenv.config();
 
+console.log('ZHIPU_API_KEY 读取结果:', process.env.ZHIPU_API_KEY ? '已加载' : '未定义');
+
 const app = express();
 const port = process.env.PORT || 8787;
 const allowedOrigin = process.env.CORS_ORIGIN || '*';
