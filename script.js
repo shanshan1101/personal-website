@@ -176,7 +176,7 @@ function setupContactForm() {
 
         try {
             // 发送表单数据到服务器
-            const response = await fetch('https://personal-website-kappa-ruddy.vercel.app/api/contact', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
